@@ -1,0 +1,27 @@
+[submodule "posts-users-ui-ng"]
+	path = replication-angular-node/posts-users-ui-ng
+    url = https://github.com/anonbnr/posts-users-ui-ng
+[submodule "replication-angular-node/posts-users-backend-nodejs"]
+	path = replication-angular-node/posts-users-backend-nodejs
+	url = https://github.com/anonbnr/posts-users-backend
+[submodule "replication-react-node/posts-users-backend-nodejs"]
+	path = replication-react-node/posts-users-backend-nodejs
+	url = https://github.com/anonbnr/posts-users-backend
+[submodule "replication-react-node/posts-users-ui-react"]
+	path = replication-react-node/posts-users-ui-react
+	url = https://github.com/anonbnr/posts-users-ui-react
+[submodule "replication-gwt/dummy-frontend-gwt"]
+	path = replication-gwt/dummy-frontend-gwt
+	url = https://github.com/anasshatnawi/dummy-frontend-gwt
+[submodule "replication-angular-spring-boot/petstore-frontend-angular"]
+	path = replication-angular-spring-boot/petstore-frontend-angular
+	url = https://github.com/anasshatnawi/petstore-frontend-angular
+[submodule "replication-react-spring-boot/petstore-frontend-react"]
+	path = replication-react-spring-boot/petstore-frontend-react
+	url = https://github.com/anasshatnawi/petstore-frontend-react
+[submodule "replication-angular-spring-boot/jpetstore-backend-spring-boot"]
+	path = replication-angular-spring-boot/jpetstore-backend-spring-boot
+	url = https://github.com/anasshatnawi/jpetstore-backend-spring-boot
+[submodule "replication-react-spring-boot/jpetstore-backend-spring-boot"]
+	path = replication-react-spring-boot/jpetstore-backend-spring-boot
+	url = https://github.com/anasshatnawi/jpetstore-backend-spring-boot

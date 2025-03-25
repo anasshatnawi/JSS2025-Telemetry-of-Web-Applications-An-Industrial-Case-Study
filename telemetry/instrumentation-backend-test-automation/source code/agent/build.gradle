@@ -1,0 +1,129 @@
+plugins {
+  id "java"
+
+  id "com.github.johnrengelman.shadow" version "7.1.2"
+  id "com.diffplug.spotless" version "6.13.0"
+
+  id "io.opentelemetry.instrumentation.muzzle-generation" version "1.10.1-alpha"
+  id "io.opentelemetry.instrumentation.muzzle-check" version "1.10.1-alpha"
+}
+
+
+group 'fr.drit.javaagent.endpoints'
+version '1.0'
+
+ext {
+  versions = [
+    opentelemetry              : "1.9.1",
+    opentelemetryAlpha         : "1.9.1-alpha",
+    opentelemetryJavaagent     : "1.10.1",
+    opentelemetryJavaagentAlpha: "1.10.1-alpha",
+  ]
+
+  deps = [
+    autoservice: dependencies.create(group: 'com.google.auto.service', name: 'auto-service', version: '1.0')
+  ]
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    name = "sonatype"
+    url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+  }
+}
+
+configurations {
+  otel
+}
+
+spotless {
+  java {
+    googleJavaFormat()
+    target("src/**/*.java")
+  }
+}
+
+dependencies {
+  /*
+  Interfaces and SPIs that we implement. We use `compileOnly` dependency because during
+  runtime all necessary classes are provided by javaagent itself.
+   */
+  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:${versions.opentelemetryAlpha}")
+  compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-instrumentation-api:${versions.opentelemetryJavaagentAlpha}")
+  compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:${versions.opentelemetryJavaagentAlpha}")
+
+  //Provides @AutoService annotation that makes registration of our SPI implementations much easier
+  compileOnly deps.autoservice
+  annotationProcessor deps.autoservice
+
+  /*
+  CUSTOM DEPENDENCIES
+  Only dependencies added to `implementation` configuration will be picked up by Shadow plugin
+  and added to the resulting jar for our extension's distribution.
+   */
+  //Note: Since we are dealing with Tomcat, the dependencies are added directly to the application
+  //instead of trying to inject them, so they don't need to be in the jar.
+  compileOnly "com.thoughtworks.xstream:xstream:1.4.20"
+  compileOnly "org.codehaus.jettison:jettison:1.4.0"
+
+  //Otel Java instrumentation that we extend
+  otel("io.opentelemetry.javaagent:opentelemetry-javaagent:${versions.opentelemetryJavaagent}")
+
+  add("codegen", "io.opentelemetry.javaagent:opentelemetry-javaagent-tooling:${versions.opentelemetryJavaagentAlpha}")
+  add("codegen", "ch.qos.logback:logback-classic:1.2.3")
+  add("muzzleBootstrap", "io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-annotation-support:${versions.opentelemetryJavaagentAlpha}")
+  add("muzzleBootstrap", "io.opentelemetry.javaagent:opentelemetry-javaagent-instrumentation-api:${versions.opentelemetryJavaagentAlpha}")
+  add("muzzleTooling", "io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:${versions.opentelemetryJavaagentAlpha}")
+  add("muzzleTooling", "io.opentelemetry.javaagent:opentelemetry-javaagent-tooling:${versions.opentelemetryJavaagentAlpha}")
+  add("muzzleTooling", "org.slf4j:slf4j-simple:1.7.30")
+}
+
+//Produces a copy of upstream javaagent with this extension jar included inside it
+//The location of extension directory inside agent jar is hard-coded in the agent source code
+task extendedAgent(type: Jar) {
+  dependsOn(configurations.otel)
+  archiveFileName = "opentelemetry-javaagent.jar"
+  from zipTree(configurations.otel.singleFile)
+  from(tasks.shadowJar.archiveFile) {
+    into "extensions"
+  }
+
+  //Preserve MANIFEST.MF file from the upstream javaagent
+  doFirst {
+    manifest.from(
+      zipTree(configurations.otel.singleFile).matching {
+        include 'META-INF/MANIFEST.MF'
+      }.singleFile
+    )
+  }
+}
+
+tasks {
+  compileJava {
+    options.release.set(8)
+  }
+
+  assemble.dependsOn(shadowJar)
+}
+
+tasks.register("buildAll") {
+    group = "build"
+    dependsOn(":spotlessApply", "clean", "extendedAgent")
+
+    doLast {
+        def outputDir = file("${project.rootDir}/prebuilt")
+        outputDir.mkdirs()
+
+        def agentJar = file("${buildDir}/libs/opentelemetry-javaagent.jar")
+        def extensionJar = file("${buildDir}/libs/${project.name}-${version}-all.jar")
+
+        copy {
+            from agentJar
+            from extensionJar
+            into outputDir
+        }
+
+        println "✅ Agent and extension JARs moved to: ${outputDir}"
+    }
+}

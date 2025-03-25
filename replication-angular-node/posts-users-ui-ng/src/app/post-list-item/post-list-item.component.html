@@ -1,0 +1,27 @@
+<mat-card class="post-card" [ngClass]="{'liked': post.loveIts > 0, 'disliked': post.loveIts < 0}">
+    <mat-card-header>
+        <mat-icon class="post-icon">article</mat-icon>
+        <div class="post-title-container">
+            <mat-card-title>{{ post.title }}</mat-card-title>
+            <mat-card-subtitle>🕒 {{ post.createdAt | date: 'short' }}</mat-card-subtitle>
+        </div>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p class="post-content">{{ post.content }}</p>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="action-buttons">
+        <button id="like" mat-icon-button color="primary" (click)="onLoveIt()" matTooltip="Love this post!">
+            <mat-icon>thumb_up</mat-icon>
+        </button>
+        <button id="unlike" mat-icon-button color="warn" (click)="onNotLoveIt()" matTooltip="Not a fan of this post">
+            <mat-icon>thumb_down</mat-icon>
+        </button>
+        <button id="delete" mat-icon-button color="accent" (click)="onDelete()" matTooltip="Delete this post">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

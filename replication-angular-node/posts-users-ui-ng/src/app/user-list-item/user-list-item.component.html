@@ -1,0 +1,11 @@
+<mat-card class="user-preview-card" (click)="navigateToUserProfile()">
+    <div class="user-preview-header">
+        <img [src]="user.avatarImagePath" alt="User Avatar" class="user-avatar">
+        <div class="user-preview-details">
+            <p class="user-name">{{ user.firstName }} {{ user.lastName }}</p>
+            <p class="user-country">
+                <mat-icon>public</mat-icon> {{ user.country }}
+            </p>
+        </div>
+    </div>
+</mat-card>

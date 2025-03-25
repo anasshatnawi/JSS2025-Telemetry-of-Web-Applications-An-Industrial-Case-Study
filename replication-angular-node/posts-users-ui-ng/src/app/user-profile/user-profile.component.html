@@ -1,0 +1,71 @@
+<mat-card class="profile-card" *ngIf="user">
+    <mat-card-header class="profile-header">
+        <div class="profile-details">
+            <mat-card-title>{{ user.firstName }} {{ user.lastName }} ({{ user.gender }})</mat-card-title>
+            <mat-card-subtitle>{{ user.createdAt | date: 'short' }}</mat-card-subtitle>
+        </div>
+        <div class="profile-avatar">
+            <img [src]="user.avatarImagePath" alt="User Avatar">
+        </div>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class="info-section">
+            <mat-divider></mat-divider>
+            <div class="info-row">
+                <mat-icon>cake</mat-icon>
+                <span>Birthday: <strong>{{ user.birthday | date: 'd/M/Y' }}</strong></span>
+            </div>
+            <div class="info-row">
+                <mat-icon>email</mat-icon>
+                <span>Email: <strong>{{ user.email }}</strong></span>
+            </div>
+            <div class="info-row">
+                <mat-icon>public</mat-icon>
+                <span>Country: <strong>{{ user.country }}</strong></span>
+            </div>
+            <div class="info-row">
+                <mat-icon>phone</mat-icon>
+                <span>Telephone: <strong>{{ user.telephone }}</strong></span>
+            </div>
+        </div>
+
+        <div *ngIf="user.bio" class="bio-section">
+            <mat-divider></mat-divider>
+            <h4 class="bio-title">📝 Bio</h4>
+            <p class="bio-content">
+                {{ expanded ? user.bio : (user.bio | slice:0:150) + (user.bio.length > 150 ? '...' : '') }}
+            </p>
+            <button mat-button class="toggle-bio" *ngIf="user.bio.length > 150" (click)="toggleBio()">
+                {{ expanded ? 'Read Less' : 'Read More' }}
+            </button>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="extra-info">
+            <div class="info-row">
+                <mat-icon>calculate</mat-icon>
+                <span>Favorite Number: <strong>{{ user.favoriteNumber }}</strong></span>
+            </div>
+
+            <div class="info-row">
+                <mat-icon>palette</mat-icon>
+                <span>Favorite Color:</span>
+                <span class="color-box" [style.backgroundColor]="user.favoriteColor"></span>
+            </div>
+
+            <div class="info-row">
+                <mat-icon>psychology</mat-icon>
+                <span>Agreement Level: <strong>{{ user.agreementLevel }}</strong></span>
+            </div>
+
+            <div class="info-row newsletter" *ngIf="user.getsNewsletter">
+                <mat-icon>mark_email_read</mat-icon>
+                <span>Subscribed to Newsletter</span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<p *ngIf="!user" class="not-found">User not found.</p>

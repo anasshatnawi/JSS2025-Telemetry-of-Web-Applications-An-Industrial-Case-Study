@@ -1,0 +1,24 @@
+{
+  "service": {
+    "name": "posts-users-ui-ng",
+    "version": "2.0.0"
+  },
+  "enabledEvents": {
+    "click": true,
+    "change": true,
+    "select": true,
+    "submit": true,
+    "scroll": true,
+    "scrollend": true,
+    "drag": true,
+    "dragend": true,
+    "dragenter": true,
+    "dragleave": true,
+    "dragover": true,
+    "dragstart": true,
+    "drop": true,
+    "focus": true,
+    "focusin": true,
+    "focusout": true
+  }
+}

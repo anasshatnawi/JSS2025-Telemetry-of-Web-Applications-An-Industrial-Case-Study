@@ -1,0 +1,51 @@
+<mat-card class="date-time-card">
+  <mat-card-title class="date-time-title">📅 Set Your Availability</mat-card-title>
+
+  <form [formGroup]="dateTimeForm" (ngSubmit)="onSubmit()" class="date-time-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Select Date</mat-label>
+      <input matInput id="dateTime" [matDatepicker]="datePicker" formControlName="dateTime"
+        (dateChange)="closeDatepicker(datePicker)">
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Time</mat-label>
+      <input matInput id="time" type="time" formControlName="time">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Month</mat-label>
+      <input matInput id="month" type="month" formControlName="month">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Week</mat-label>
+      <input matInput id="week" type="week" formControlName="week">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save Availability</button>
+  </form>
+
+  <mat-divider></mat-divider>
+
+  <div class="results-container" *ngIf="availabilitySaved">
+    <h3>✅ Your Availability</h3>
+
+    <mat-list>
+      <mat-list-item *ngIf="dateTime">
+        📆 <strong>Date:</strong> {{ dateTime }}
+      </mat-list-item>
+      <mat-list-item *ngIf="time">
+        ⏰ <strong>Time:</strong> {{ time }}
+      </mat-list-item>
+      <mat-list-item *ngIf="month">
+        📅 <strong>Month:</strong> {{ month }}
+      </mat-list-item>
+      <mat-list-item *ngIf="week">
+        📆 <strong>Week:</strong> {{ week }}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>

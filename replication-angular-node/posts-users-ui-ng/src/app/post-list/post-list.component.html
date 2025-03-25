@@ -1,0 +1,11 @@
+<mat-card class="post-container">
+    <mat-card-title class="post-list-title">
+        📝 Latest Posts
+    </mat-card-title>
+
+    <mat-divider></mat-divider>
+
+    <div class="post-list">
+        <app-post-list-item *ngFor="let post of posts" [post]="post"></app-post-list-item>
+    </div>
+</mat-card>
