@@ -75,7 +75,7 @@ Prebuilt versions of our instrumentation agents are available in the repository.
 #### 🖥️ Backend Instrumentation (Test Automation)
 - **Location:** [telemetry/instrumentation-backend-test-automation/prebuilt](telemetry/instrumentation-backend-test-automation/prebuilt)
 - **Integration:**  
-  Attach the agent to your Java application by adding it as a Java agent. For example, with the Spring Boot backend application:
+  Attach the agent to your Java application by adding it as a Java agent (without touching its source code 😄). For example, with the Spring Boot backend application:
   ```bash
   java -javaagent:../../telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
        -Dotel.service.name=jpetstore-backend-springboot \
@@ -86,6 +86,8 @@ Prebuilt versions of our instrumentation agents are available in the repository.
        -Dotel.instrumentation.endpoints.enabled=true \
        -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
   ```
+
+Make sure to replace `<path/to/repo>` by your actual local repository's path.
 
 ---
 
