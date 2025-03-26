@@ -77,14 +77,14 @@ Prebuilt versions of our instrumentation agents are available in the repository.
 - **Integration:**  
   Attach the agent to your Java application by adding it as a Java agent (without touching its source code 😄). For example, with the Spring Boot backend application:
   ```bash
-  java -javaagent:../../telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
-       -Dotel.service.name=jpetstore-backend-springboot \
-       -Dotel.exporter.otlp.protocol=http/protobuf \
-       -Dotel-exporter-otlp-endpoint=http://localhost:4318 \
-       -Dotel.metrics.exporter=none \
-       -Dotel.instrumentation.common.default-enabled=false \
-       -Dotel.instrumentation.endpoints.enabled=true \
-       -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
+  java -javaagent:<path/to/repo>/telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
+     -Dotel.service.name=jpetstore-backend-springboot \
+     -Dotel.exporter.otlp.protocol=http/protobuf \
+     -Dotel-exporter-otlp-endpoint=http://localhost:4318 \
+     -Dotel.metrics.exporter=none \
+     -Dotel.instrumentation.common.default-enabled=false \
+     -Dotel.instrumentation.endpoints.enabled=true \
+     -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
   ```
 
 Make sure to replace `<path/to/repo>` by your actual local repository's path.
