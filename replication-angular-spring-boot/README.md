@@ -66,9 +66,16 @@ Our prebuilt instrumentation agents are available in the global repository. For 
    mvn clean package
    ```
 3. **Run the Backend:**  
-   Launch the Spring Boot application (*adjust the command if using the instrumentation agent*):
-   ```sh
-   java -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
+   Launch the Spring Boot application with the instrumentation agent by adding it as a Java agent (without touching its source code :)) as follows:
+   ```bash
+   java -javaagent:../../telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
+       -Dotel.service.name=jpetstore-backend-springboot \
+       -Dotel.exporter.otlp.protocol=http/protobuf \
+       -Dotel-exporter-otlp-endpoint=http://localhost:4318 \
+       -Dotel.metrics.exporter=none \
+       -Dotel.instrumentation.common.default-enabled=false \
+       -Dotel.instrumentation.endpoints.enabled=true \
+       -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
    ```
 
 4. The backend service should be running on its configured port (e.g., [http://localhost:4000/getOrders](http://localhost:4000/getOrders)).
