@@ -77,7 +77,7 @@ Our prebuilt instrumentation agents are available in the global repository. For 
        -Dotel.instrumentation.endpoints.enabled=true \
        -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
    ```
-4. The backend service should be running on its configured port (e.g., [http://localhost:4000](http://localhost:4000)).
+4. The backend service should be running on its configured port (e.g., [http://localhost:4000/getOrders](http://localhost:4000/getOrders)).
 
 #### 🌐 React Frontend
 1. Open a terminal and navigate to the React application folder:
