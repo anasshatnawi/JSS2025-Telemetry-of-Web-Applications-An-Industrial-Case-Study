@@ -66,7 +66,7 @@ Our prebuilt instrumentation agents are provided in the global repository. For d
    ```
 4. Once the embedded Jetty server starts, open your browser and navigate to:
    ```
-   http://127.0.0.1:8888/GWTDummyApp.html
+   http://localhost:8888/GWTDummyApp.html
    ```
    You should see the GWT application running.
 

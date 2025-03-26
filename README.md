@@ -72,7 +72,8 @@ Prebuilt versions of our instrumentation agents are available in the repository.
   ```bash
   java -javaagent:../../telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
        -Dotel.service.name=jpetstore-backend-springboot \
-       -Dotel.traces.exporter=zipkin \
+       -Dotel.exporter.otlp.protocol=http/protobuf \
+       -Dotel-exporter-otlp-endpoint=http://localhost:4318 \
        -Dotel.metrics.exporter=none \
        -Dotel.instrumentation.common.default-enabled=false \
        -Dotel.instrumentation.endpoints.enabled=true \

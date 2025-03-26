@@ -6,7 +6,7 @@ This folder contains the replication artifacts for the **React/Spring Boot** con
 ## 📂 Package Contents  
 - `jpetstore-backend-spring-boot/` – Spring Boot backend application (PetStore API)  
 - `petstore-frontend-react/` – React frontend application (built with React and Vite)  
-- `screenshots/` – Jaeger and Zipkin trace screenshots for the PetStore application  
+- `screenshots/` – Jaeger trace screenshots for the PetStore application  
 
 ```plaintext
 replication-react-spring-boot/
@@ -39,11 +39,6 @@ Before running the applications, start the telemetry backend (see [global README
    docker-compose up -d
    ```
 3. Verify that Jaeger is accessible at [http://localhost:16686](http://localhost:16686) for the frontend traces.
-4. Launch a Zipkin container using Docker:
-   ```sh
-   docker run -d -p 9411:9411 openzipkin/zipkin
-   ```
-5. Verify that Zipkin is accessible at [http://localhost:9411](http://localhost:9411) for the backend traces.
 
 ---
 
@@ -60,19 +55,14 @@ Our prebuilt instrumentation agents are available in the global repository. For 
 
 ### 3. Run the Applications
 #### 🖥️ Spring Boot Backend
-1. **Database Setup:**  
-   - Spin up a PostgreSQL container:
+1. **Database Setup:**
+   In the `jpetstore-backend-spring-boot` folder, use Docker to setup the database:
      ```sh
-     docker run --name postgres-container -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres:latest
-     ```
-   - Create the `petstore` database:
-     ```sh
-     docker exec -it postgres-container psql -U postgres -c "CREATE DATABASE petstore;"
+     cd replication-angular-spring-boot/jpetstore-backend-spring-boot
+     docker compose up -d
      ```
 2. **Build the Backend:**  
-   In the `jpetstore-backend-spring-boot` folder, build the application:
    ```sh
-   cd replication-react-spring-boot/jpetstore-backend-spring-boot
    mvn clean package
    ```
 3. **Run the Backend:**  
@@ -99,9 +89,7 @@ Our prebuilt instrumentation agents are available in the global repository. For 
 
 ### 4. Interact & Verify
 - **User Interactions:** Interact with the React app (e.g., form submissions, clicks) to generate telemetry data.
-- **Trace Verification:**
-   1. Open Jaeger UI ([http://localhost:16686](http://localhost:16686)) to view and analyze the collected frontend traces.
-   2. Open Zipkin UI ([http://localhost:9411](http://localhost:9411)) to view and analyze the collected backend traces.
+- **Trace Verification:** Open Jaeger UI ([http://localhost:16686](http://localhost:16686)) to view and analyze the collected traces.
 
 *For package-specific configuration details or further instructions, please refer to the README files within each submodule.*
 
@@ -111,19 +99,19 @@ Our prebuilt instrumentation agents are available in the global repository. For 
 ### 🌐 Frontend  
 #### Traces Overview  
 This screenshot shows the Jaeger search page (trace timeline and comparator) for the last 100 frontend traces collected in the past hour.  
-![Jaeger Trace Overview](screenshots/jaeger/traces-overview.png)
+![Jaeger Frontend Trace Overview](screenshots/frontend/traces-overview.png)
 
 #### Trace Detail  
 This screenshot displays the detailed span view—including all tags (e.g., service name, user/session IDs, timestamps) and process metadata.  
-![Jaeger Span Detail](screenshots/jaeger/trace-detail.png)
+![Jaeger Frontend Span Detail](screenshots/frontend/trace-detail.png)
 
 ---
 
 ### 🖥️ Backend  
 #### Traces Overview  
-This screenshot shows the Zipkin search page (trace timeline and comparator) for the last 100 backend traces collected in the past hour.  
-![Zipkin Trace Overview](screenshots/zipkin/traces-overview.png)
+This screenshot shows the Jaeger search page (trace timeline and comparator) for the last 100 backend traces collected in the past hour.  
+![Jaeger Backend Trace Overview](screenshots/backend/traces-overview.png)
 
 #### Trace Detail  
 This screenshot displays the detailed span view—including all data for test automation (e.g., REST API classes, methods, arguments, results) and process metadata.  
-![Zipkin Trace Detail](screenshots/zipkin/trace-detail.png)
+![Jaeger Backend Trace Detail](screenshots/backend/trace-detail.png)
