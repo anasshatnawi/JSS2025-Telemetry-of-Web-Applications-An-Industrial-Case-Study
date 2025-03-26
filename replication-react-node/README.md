@@ -17,12 +17,41 @@ replication-react-node/
 
 ---
 
-## 🔧 Prerequisites  
+## 🛠️ Environment Setup
+### 🔧 Prerequisites  
 Ensure you have the following tools installed (see [global README](../README.md#️-common-tools) for details):
 - **Java JDK 11+ ☕**
 - **Apache Maven 3.x 🛠️**
 - **Node.js & npm 🟢**
 - **Docker Compose 🐳**
+
+---
+
+### 🖥️ Node.js Backend
+1. Open a terminal and navigate to the backend folder:
+   ```sh
+   cd replication-react-node/posts-users-backend-nodejs
+   ```
+2. Install dependencies and run the backend:
+   ```sh
+   npm install
+   npm run dev
+   ```
+3. The backend service should be running on its configured port (e.g., [http://localhost:5000](http://localhost:5000)).
+
+---
+
+#### 🌐 React Frontend
+1. Open another terminal and navigate to the React application folder:
+   ```sh
+   cd replication-react-node/posts-users-ui-react
+   ```
+2. Install dependencies and start the application:
+   ```sh
+   npm install
+   npm start
+   ```
+3. Access the app at: [http://localhost:4201](http://localhost:4201)
 
 ---
 
@@ -43,46 +72,28 @@ Before running the applications, launch the telemetry backend (see [global READM
 
 ### 2. Instrumentation Integration  
 Our prebuilt instrumentation agents are provided in the global repository. For details, see the [global README](../README.md#2-use-the-prebuilt-instrumentation-agents).
-- **Frontend Agent:**  
-  Located in `telemetry/instrumentation-frontend-user-experience/prebuilt`  
-  *(Integrate by including the appropriate `<script>` tag in your React app’s HTML.)*
+
+#### Frontend Agent 
+1. Locate it under `telemetry/instrumentation-frontend-user-experience/prebuilt` in our repository root.
+2. Copy it under `public/assets/telemetry/` of the React application.
+3. Link it to the application's `index.html` page by adding the following script tag at the end of the page's body.
+```html
+<body>
+   <!-- Existing application content-->
+   ... 
+   <!-- Link to agent-->
+   <script src="assets/telemetry/posts-users-ui-react-2025-03-21T03-03-55-465Z.js"></script>
+</body>
+```
+4. *Note: if the frontend application doesn't use a live reload server to recompile automatically upon change detection, then it must be rebuilt and redeployed again after instrumentation*.
 
 ---
 
-### 3. Run the Applications
-#### 🖥️ Node.js Backend
-1. Open a terminal and navigate to the backend folder:
-   ```sh
-   cd replication-react-node/posts-users-backend-nodejs
-   ```
-2. Install dependencies and run the backend:
-   ```sh
-   npm install
-   npm run dev
-   ```
-3. The backend service should be running on its configured port (e.g., [http://localhost:5000](http://localhost:5000)).
+### 3. Interact & Verify  
+- **User Interactions:** Interact with the React app (e.g., clicks, form submissions) to generate telemetry data.
+- **Trace Verification:** Open Jaeger UI ([http://localhost:16686](http://localhost:16686)) to view and analyze the collected frontend traces.
 
-#### 🌐 React Frontend
-1. Open another terminal and navigate to the React application folder:
-   ```sh
-   cd replication-react-node/posts-users-ui-react
-   ```
-2. Install dependencies and start the application:
-   ```sh
-   npm install
-   npm start
-   ```
-3. Access the app at: [http://localhost:4201](http://localhost:4201)
-
----
-
-### 4. Interact & Verify  
-- **User Interactions:**  
-  Interact with the React app (e.g., clicks, form submissions) to generate telemetry data.
-- **Trace Verification:**  
-  Open Jaeger UI ([http://localhost:16686](http://localhost:16686)) to view and analyze the collected traces.
-
-*For package-specific configuration details or further instructions, please refer to the individual README files within the corresponding submodules.*
+*For submodule-specific configuration details or further instructions, please refer to the individual README files within the corresponding submodules.*
 
 ---
 
@@ -92,5 +103,5 @@ This screenshot shows the Jaeger search page (trace timeline and comparator) for
 ![Jaeger Trace Overview](screenshots/traces-overview.png)
 
 ### Trace Detail  
-This screenshot displays the detailed span view—including all tags (e.g., service name, user/session IDs, timestamps) and process metadata.  
+Since each user interaction produces a single span, this screenshot displays the detailed span view — including all tags (service name, user/session IDs, timestamps) and process metadata.
 ![Jaeger Span Detail](screenshots/trace-detail.png)

@@ -20,7 +20,7 @@ This repository contains the replication package for our paper *Telemetry of Web
       1. *Agent for frontend applications (user experience).*  
       2. Contains prebuilt JavaScript bundles and source code with its own README.
 3. **Telemetry Backend:**
-   - **[Telemetry Backend](./telemetry/telemetry-backend):** Contains the Docker Compose configuration and OTEL collector configuration (`otel-config.yaml`) to run the OpenTelemetry Collector and Jaeger.
+   - **[Telemetry Backend](./telemetry/telemetry-backend):** Contains the Docker Compose configuration and OpenTelemetry configuration (`otel-config.yaml`) to run the OpenTelemetry Collector and Jaeger.
 
 ---
 
@@ -31,7 +31,7 @@ Our repository is composed of multiple submodules that must all be cloned recurs
 git clone --recurse-submodules https://github.com/anasshatnawi/IEEETSE2025-Telemetry-of-Web-Applications-An-Industrial-Case-Study
 ```
 
-## 🛠️ Common Tools
+## 🛠️ Common Prerequisites
 Ensure you have the following installed and accessible on your command line:
 - **Java JDK 11+ ☕**
 - **Apache Maven 3.x 🛠️**
@@ -66,16 +66,24 @@ Prebuilt versions of our instrumentation agents are available in the repository.
 
 #### 🌐 Frontend Instrumentation (User Experience)
 - **Location:** [telemetry/instrumentation-frontend-user-experience/prebuilt](telemetry/instrumentation-frontend-user-experience/prebuilt)
-- **Integration:**  
-  Add the corresponding JavaScript bundle to your web application's main HTML file. For example, in your GWT frontend application's HTML file:
-  ```html
-  <script src="assets/telemetry/dummy-frontend-gwt-2025-03-24T23-19-01-815Z.js"></script>
-  ```
+- **Integration:**
+
+1. Copy the corresponding JavaScript bundle into the right location of the web application, which changes depending on its technology. For example, for Angular frontend applications, the bundle must be placed under `public/assets/telemetry/` folder. For more details on other web technologies, see the replication package-specific READMEs. 
+2. Link the bundle to your web application's main HTML file. For example, in your Angular Pet Store frontend application's HTML file:
+
+```html
+<body>
+   <!-- Existing application content-->
+   ... 
+   <!-- Link to agent-->
+   <script src="assets/telemetry/petstore-frontend-angular-2025-03-24T20-05-46-100Z.js"></script>
+</body>
+```
 
 #### 🖥️ Backend Instrumentation (Test Automation)
 - **Location:** [telemetry/instrumentation-backend-test-automation/prebuilt](telemetry/instrumentation-backend-test-automation/prebuilt)
-- **Integration:**  
-  Attach the agent to your Java application by adding it as a Java agent (without touching its source code 😄). For example, with the Spring Boot backend application:
+- **Integration:** Attach the agent to your Java application by adding it as a Java agent (without touching its source code 😄). For example, with the Spring Boot backend application:
+
   ```bash
   java -javaagent:<path/to/repo>/telemetry/instrumentation-backend-test-automation/prebuilt/instrumentation-backend-test-automation.jar \
      -Dotel.service.name=jpetstore-backend-springboot \
