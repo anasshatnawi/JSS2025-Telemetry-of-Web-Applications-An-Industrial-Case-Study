@@ -71,7 +71,7 @@ Our prebuilt instrumentation agents are available in the global repository. For 
    java -jar target/PetStore-Monolithique-0.0.1-SNAPSHOT.jar
    ```
 
-4. The backend service should be running on its configured port (e.g., [http://localhost:4000/getOrders](http://localhost:/getOrders)).
+4. The backend service should be running on its configured port (e.g., [http://localhost:4000/getOrders](http://localhost:4000/getOrders)).
 
 #### 🌐 Angular Frontend  
 1. Open a terminal and navigate to the Angular application folder:
