@@ -1,5 +1,5 @@
 # Replication Package – Angular Frontend & Spring Boot Backend  
-This folder contains the replication artifacts for the **Angular/Spring Boot** configuration used in our study *Telemetry of Web Applications: An Industrial Case Study*. For common instructions (global tools, telemetry backend, instrumentation agent integration, etc.), please refer to the [global README](../README.md) in the repository root.
+This folder contains the replication artifacts for the **Angular/Spring Boot** application used in our study *Telemetry of Web Applications: An Industrial Case Study*. For common instructions (global tools, telemetry backend, instrumentation agent integration, etc.), please refer to the [global README](../README.md) in the repository root.
 
 ---
 
