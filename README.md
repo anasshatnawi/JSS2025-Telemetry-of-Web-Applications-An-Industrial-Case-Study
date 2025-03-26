@@ -82,7 +82,7 @@ Prebuilt versions of our instrumentation agents are available in the repository.
 ---
 
 ### 3. Replication Package–Specific Instructions
-Each replication package (e.g., [replication-angular-node](./replication-angular-node/README.md), [replication-react-spring-boot](./replication-react-spring-boot/README.md), [replication-gwt](./replication-gwt/README.md)) includes its own README with detailed instructions for:
+Each replication package (e.g., [replication-react-spring-boot](./replication-react-spring-boot/README.md), [replication-angular-node](./replication-angular-node/README.md), [replication-gwt](./replication-gwt/README.md)) includes its own README with detailed instructions for:
 
 - **Application Technologies:** (Angular, React, GWT, etc.)
 - **Build & Run Instructions:** for the frontend and backend applications.
