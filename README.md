@@ -36,7 +36,7 @@ Ensure you have the following installed and accessible on your command line:
 
 ## 🚀 Global Replication Steps
 ### 1. Launch the Telemetry Backend
-The telemetry backend (located in [telemetry/telemetry-backend](./telemetry/telemetry-backend)) starts:
+The telemetry backend is used to collect, store and visualise the collected data. It is located in [telemetry/telemetry-backend](./telemetry/telemetry-backend). It includes:
 - An **OpenTelemetry Collector** (listening on ports **4317** for gRPC and **4318** for HTTP) 📡
 - A **Jaeger** instance for trace visualization 🔍
 
