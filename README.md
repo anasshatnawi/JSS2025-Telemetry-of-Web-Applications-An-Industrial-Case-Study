@@ -7,10 +7,10 @@ This repository contains the replication package for our paper *Telemetry of Web
 
 ## 📂 Table of Contents
 1. **Replication Packages:**
-   - **[replication-angular-node](./replication-angular-node):** Angular frontend and Node.js backend.
    - **[replication-angular-spring-boot](./replication-angular-spring-boot):** Angular frontend and Spring Boot backend.
-   - **[replication-react-node](./replication-react-node):** React frontend and Node.js backend.
    - **[replication-react-spring-boot](./replication-react-spring-boot):** React frontend and Spring Boot backend.
+   - **[replication-angular-node](./replication-angular-node):** Angular frontend and Node.js backend.
+   - **[replication-react-node](./replication-react-node):** React frontend and Node.js backend.
    - **[replication-gwt](./replication-gwt):** GWT frontend application.
 2. **Telemetry Instrumentation Agents:**
    - **[Backend Test Automation Agent](./telemetry/instrumentation-backend-test-automation):**
