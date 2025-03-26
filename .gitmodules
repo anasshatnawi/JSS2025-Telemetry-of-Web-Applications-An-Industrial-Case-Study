@@ -1,4 +1,4 @@
-[submodule "posts-users-ui-ng"]
+[submodule "replication-angular-node/posts-users-ui-ng"]
 	path = replication-angular-node/posts-users-ui-ng
     url = https://github.com/anonbnr/posts-users-ui-ng
 [submodule "replication-angular-node/posts-users-backend-nodejs"]
