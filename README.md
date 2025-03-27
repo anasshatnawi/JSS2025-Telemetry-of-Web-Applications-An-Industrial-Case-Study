@@ -107,3 +107,14 @@ Each replication package (e.g., [replication-react-spring-boot](./replication-re
 - **Screenshots & Trace Query Examples**
 
 Please refer to the README in each replication package directory for further details.
+
+## 📬 Contact Information
+If you have any questions, feedback, or issues related to the replication package, feel free to reach out to us:
+
+- **Anas Shatnawi**  
+  *Senior Research Engineer, Berger-Levrault*  
+  📧 [anas.shatnawi@berger-levrault.com](mailto:anas.shatnawi@berger-levrault.com)
+
+- **Bachar Rima**  
+  *Research Engineer, Berger-Levrault, PhD Student, University of Montpellier*  
+  📧 [bachar.rima@berger-levrault.com](mailto:bachar.rima@berger-levrault.com)
