@@ -81,9 +81,9 @@ Before running the applications, launch the telemetry backend (see [global READM
 Our prebuilt instrumentation agents are available in the global repository. For details, see the [global README](../README.md#2-use-the-prebuilt-instrumentation-agents).
 
 #### Frontend Agent 
-1. Locate it under `telemetry/instrumentation-frontend-user-experience/prebuilt` in our repository root.
-2. Copy it under `public/assets/telemetry/` of the Angular application.
-3. Link it to the application's `index.html` page by adding the following script tag at the end of the page's body :
+1. Locate the agent `petstore-frontend-angular-2025-03-24T20-05-46-100Z.js` under `telemetry/instrumentation-frontend-user-experience/prebuilt` in our repository root.
+2. In the Angular applicaion, create a directoy `public/assets/telemetry/` and copy the agent there.
+3. Link agent to the application's `index.html` page by adding the following script tag at the end of the page's body :
 ```html
 <body>
    <!-- Existing application content-->
