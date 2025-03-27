@@ -21,6 +21,14 @@ This repository contains the replication package for our paper *Telemetry of Web
       2. Contains prebuilt JavaScript bundles and source code with its own README.
 3. **Telemetry Backend:**
    - **[Telemetry Backend](./telemetry/telemetry-backend):** Contains the Docker Compose configuration and OpenTelemetry configuration (`otel-config.yaml`) to run the OpenTelemetry Collector and Jaeger.
+4. **Demonstration of our Approach on the Pet Store System:**
+   - **[Introduction & Overview](./demo/01_intro.mp4)**
+   - **[Telemetry Backend Setup](./demo/02_telemetry_setup.mp4)**
+   - **[The Pet Store System Setup](./demo/03_demo_applications_setup.mp4)**
+   - **[Instrumentation Agents Integration](./demo/04_agents_integration.mp4)**
+   - **[Live Demo: Generating, Visualizing, and Discussing Telemetry Data](./demo/05_live_demo.mp4)**
+   - **[Integration with Different Telemetry Backends - Zipkin Example](./demo/06_zipkin_example.mp4)**
+   - **[Concluding Remarks](./demo/07_conclusion.mp4)**
 
 ---
 
@@ -108,13 +116,17 @@ Each replication package (e.g., [replication-react-spring-boot](./replication-re
 
 Please refer to the README in each replication package directory for further details.
 
+---
+
 ## 📬 Contact Information
 If you have any questions, feedback, or issues related to the replication package, feel free to reach out to us:
 
 - **Anas Shatnawi**  
   *Senior Research Engineer, Berger-Levrault*  
-  📧 [anas.shatnawi@berger-levrault.com](mailto:anas.shatnawi@berger-levrault.com)
+  📧 [anas.shatnawi@berger-levrault.com](mailto:anas.shatnawi@berger-levrault.com)  
+  🔗 [GitHub](https://github.com/anasshatnawi)
 
 - **Bachar Rima**  
   *Research Engineer, Berger-Levrault, PhD Student, University of Montpellier*  
-  📧 [bachar.rima@berger-levrault.com](mailto:bachar.rima@berger-levrault.com)
+  📧 [bachar.rima@berger-levrault.com](mailto:bachar.rima@berger-levrault.com)  
+  🔗 [GitHub](https://github.com/anonbnr)

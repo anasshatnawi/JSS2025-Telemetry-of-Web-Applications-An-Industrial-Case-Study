@@ -137,3 +137,6 @@ dist
 
 # gradle
 *gradle/
+
+# bin
+*bin/
