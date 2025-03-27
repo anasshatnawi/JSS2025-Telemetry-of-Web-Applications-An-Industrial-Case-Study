@@ -140,3 +140,8 @@ dist
 
 # bin
 *bin/
+replication-angular-spring-boot/.DS_Store
+replication-angular-spring-boot/screenshots/.DS_Store
+replication-angular-spring-boot/screenshots/backend/.DS_Store
+replication-react-spring-boot/.DS_Store
+replication-react-spring-boot/screenshots/.DS_Store
