@@ -21,14 +21,7 @@ This repository contains the replication package for our paper *Telemetry of Web
       2. Contains prebuilt JavaScript bundles and source code with its own README.
 3. **Telemetry Backend:**
    - **[Telemetry Backend](./telemetry/telemetry-backend):** Contains the Docker Compose configuration and OpenTelemetry configuration (`otel-config.yaml`) to run the OpenTelemetry Collector and Jaeger.
-4. **Demonstration Videos of our Approach on the Pet Store System:**
-   - **[Introduction & Overview](./demo-videos/01_intro.mp4)**
-   - **[Telemetry Backend Setup](./demo-videos/02_telemetry_setup.mp4)**
-   - **[The Pet Store System Setup](./demo-videos/03_demo_applications_setup.mp4)**
-   - **[Instrumentation Agents Integration](./demo-videos/04_agents_integration.mp4)**
-   - **[Live Demo: Generating, Visualizing, and Discussing Telemetry Data](./demo-videos/05_live_demo.mp4)**
-   - **[Integration with Different Telemetry Backends - Zipkin Example](./demo-videos/06_zipkin_example.mp4)**
-   - **[Concluding Remarks](./demo-videos/07_conclusion.mp4)**
+4. **[Demonstration Videos of our Approach on the Pet Store System](https://www.youtube.com/playlist?list=PLbq4v00GDahK1UTHAm8-P67U9Dd49Xvyd):** A complete guide on using our telemetry approach, from setting up the telemetry backend and the demo Pet Store System, to the integration of instrumentation agents with several observability backends (OpenTelemetry Collector, Jaeger, Zipkin) and real-time trace collection, visualization, and analysis.
 
 ---
 
