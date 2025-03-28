@@ -22,6 +22,8 @@ This repository contains the replication package for our paper *Telemetry of Web
 3. **Telemetry Backend:**
    - **[Telemetry Backend](./telemetry/telemetry-backend):** Contains the Docker Compose configuration and OpenTelemetry configuration (`otel-config.yaml`) to run the OpenTelemetry Collector and Jaeger.
 4. **[Demonstration Videos of our Approach on the Pet Store System](https://www.youtube.com/playlist?list=PLbq4v00GDahK1UTHAm8-P67U9Dd49Xvyd):** A complete guide on using our telemetry approach, from setting up the telemetry backend and the demo Pet Store System, to the integration of instrumentation agents with several observability backends (OpenTelemetry Collector, Jaeger, Zipkin) and real-time trace collection, visualization, and analysis.
+[![Watch the Demo](images/replication-demo-youtube.png)](https://www.youtube.com/playlist?list=PLbq4v00GDahK1UTHAm8-P67U9Dd49Xvyd)
+
 
 ---
 
