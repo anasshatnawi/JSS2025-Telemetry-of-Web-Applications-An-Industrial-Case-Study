@@ -1,5 +1,5 @@
 # JSS2025 – Telemetry of Web Applications: An Industrial Case Study
-This repository contains the replication package for our paper *Telemetry of Web Applications: An Industrial Case Study* (submitted to IEEE TSE). It includes all data, scripts, and documentation required to reproduce our experiments and validate our findings.
+This repository contains the replication package for our paper *Telemetry of Web Applications: An Industrial Case Study* (submitted to JSS). It includes all data, scripts, and documentation required to reproduce our experiments and validate our findings.
 
 > **Note:** Common instructions and configurations are factored out into this global README. Each replication package (e.g., [Angular/Spring Boot](./replication-angular-spring-boot/README.md), [React/Spring Boot](./replication-react-spring-boot/README.md), [Angular/Node](./replication-angular-node/README.md), [React/Node](./replication-react-node/README.md), [GWT](./replication-gwt/README.md)) has its own README that focuses on package-specific details.
 
