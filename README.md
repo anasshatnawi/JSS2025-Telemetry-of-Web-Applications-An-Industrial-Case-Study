@@ -31,7 +31,7 @@ This repository contains the replication package for our paper *Telemetry of Web
 Our repository is composed of multiple submodules that must all be cloned recursively using the following command:
 
 ```sh
-git clone --recurse-submodules https://github.com/anasshatnawi/IEEETSE2025-Telemetry-of-Web-Applications-An-Industrial-Case-Study
+git clone --recurse-submodules https://github.com/anasshatnawi/JSS2025-Telemetry-of-Web-Applications-An-Industrial-Case-Study
 ```
 
 ## 🛠️ Common Prerequisites
